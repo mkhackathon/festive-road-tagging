@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+
+# API secrets and things
+secrets/*
