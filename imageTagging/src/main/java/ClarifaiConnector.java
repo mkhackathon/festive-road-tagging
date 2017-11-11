@@ -7,7 +7,7 @@ import clarifai2.dto.prediction.Concept;
 import java.util.List;
 
 public class ClarifaiConnector {
-    ClarifaiClient client = new ClarifaiBuilder("cfc9d14b745b4e30be3a3061d332325e").buildSync();
+    ClarifaiClient client = new ClarifaiBuilder("d7539dafbab3450792bc82d530d42e18").buildSync();
 
 
     List<Concept> getTagsFromUrl(String url){
