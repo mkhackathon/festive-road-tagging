@@ -1,0 +1,5 @@
+{
+    "require": {
+        "phpfanatic/clarifai": "^2.0",
+    }
+}
