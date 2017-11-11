@@ -8,6 +8,7 @@ message Data {
 	}
 	string url = 1;
 	repeated Feature feature = 2;
+	string tags = 3;
     }
     repeated Image image = 1;
 }
