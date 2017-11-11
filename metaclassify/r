@@ -1,0 +1,4 @@
+docker build -t metaclassify docker
+docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 metaclassify.py https://scripts.njae.me.uk/festive-road-pictures/small/2017/dinosaurs-2017/Hilary-1024x682-small.jpg
+docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 metaclassify.py tags.pb
+

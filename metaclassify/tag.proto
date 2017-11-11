@@ -1,0 +1,13 @@
+syntax="proto3";
+package tag;
+message Data {
+    message Image {
+	message Feature {
+	  string label = 1;
+	  float confidence = 2;
+	}
+	string url = 1;
+	repeated Feature feature = 2;
+    }
+    repeated Image image = 1;
+}
