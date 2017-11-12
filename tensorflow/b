@@ -26,4 +26,5 @@ function testing() {
 }
 export -f testing
 #$* flower_photos daisy/21652746_cc379e0eea_m.jpg
+cp -r festival-of-giants-2017-all/bees festival-of-giants-2017/
 $* festival-of-giants-2017 puppet/19424271_10155798955468912_3425389609817707195_n-small.jpg
