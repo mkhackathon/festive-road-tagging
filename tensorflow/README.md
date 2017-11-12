@@ -40,7 +40,7 @@ git clone https://github.com/mkhackathon/festive-road-tagging \
  && cd festive-road-tagging \
  && git pull origin retraining \
  && git checkout retraining \
- && cd metaclassify
+ && cd tensorflow
 ```
 
 # Output of training
