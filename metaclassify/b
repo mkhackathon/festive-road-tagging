@@ -1,6 +1,9 @@
-#docker build -t retraining retraining
-#docker tag retraining yijun/tensorflow:retraining
-#docker push yijun/tensorflow:retraining
+function installing() {
+	docker build -t retraining retraining
+	docker tag retraining yijun/tensorflow:retraining
+	docker push yijun/tensorflow:retraining
+}
+export -f installing
 function training() {
 	if [ "$1" == "flower_photos" ]; then
 		if [ ! -d $1 ]; then
