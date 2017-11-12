@@ -1,0 +1,26 @@
+docker build -t retraining retraining
+#docker tag retraining yijun/tensorflow:retraining
+#docker push yijun/tensorflow:retraining
+function training() {
+	if [ "$1" == "flower_photos" ]; then
+		if [ ! -d $1 ]; then
+		  if [ ! -f $1.tgz ]; then
+			curl -O http://download.tensorflow.org/example_images/$1.tgz
+		  fi
+		  tar xfz $1.tgz 
+		fi
+	fi
+	docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it retraining \
+		bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir /$1
+}
+export -f training
+function testing() {
+        docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it retraining \
+		bazel-bin/tensorflow/examples/image_retraining/label_image \
+		--graph=/tmp/output_graph.pb --labels=/tmp/output_labels.txt \
+		--output_layer=final_result:0 \
+		--image=/$1/$2
+}
+export -f testing
+#$* flower_photos daisy/21652746_cc379e0eea_m.jpg
+$* festival-of-giants-2017 triceratops/19260709_1906157629708906_941293702425961197_n-small.jpg
