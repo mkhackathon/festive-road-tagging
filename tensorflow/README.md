@@ -4,7 +4,7 @@ Table of Contents
 * [Usage](#usage)
   * [Caveats](#caveats)
 * [Installation](#installation)
-* [Output of training](#output-of-training)
+* [Outputs of training](#outputs-of-training)
 * [Outputs of testing](#outputs-of-testing)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
@@ -51,7 +51,7 @@ git clone https://github.com/mkhackathon/festive-road-tagging \
  && cd festive-road-tagging/tensorflow
 ```
 
-# Output of training
+# Outputs of training
 
 Issue the following command for training:
 ```
