@@ -1,0 +1,2 @@
+docker build -t data data
+docker run -v $(pwd):/data -e DATA=festival-of-giants-2017-hand-tags.txt -it data
