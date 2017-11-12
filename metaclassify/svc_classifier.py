@@ -8,8 +8,28 @@ import numpy as np
 import configparser
 import requests
 import json
+import tensorflow as tf
+hello = tf.constant('Hello, TensorFlow!')
+sess = tf.Session()
+sess.run(hello)
+if 1:
+    sys.exit(0)
+
 from sklearn.svm import SVC
+from sklearn.svm import LinearSVC
 from sklearn.multiclass import OneVsRestClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.naive_bayes import BernoulliNB
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import Perceptron
+from sklearn.linear_model import SGDClassifier
+from sklearn.linear_model import PassiveAggressiveClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors import RadiusNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn import metrics
+from skflow import TensorFlowLinearClassifier
 
 config = configparser.ConfigParser()
 config.read('secrets/keys.ini')
@@ -123,28 +143,57 @@ if 0:
     print(Z[len(Z)-1])
 if 0:
     print(y)
-#clf = svm.SVC()
-#SVC(C=1.0, cache_size=2000, class_weight=None, coef0=0.0, decision_function_shape='ovr', degree=3, gamma='auto', kernel='rbf', max_iter=-1, probability=False, random_state=None, shrinking=True, tol=0.001, verbose=False)
-#clf.fit(X, y)  
 training_X = []
 training_y = []
 testing_X = []
 testing_y = []
 N = int(len(X) * 2 / 3)
+#N = int(len(X) * 4 / 5)
 for i in range(0, N):
     training_X.append(X[i])
     training_y.append(y[i])
 for i in range(N, len(X)):
     testing_X.append(X[i])
     testing_y.append(y[i])
-clf = OneVsRestClassifier(SVC(kernel='linear'))
-clf.fit(training_X, training_y)  
-predicted_testing_y = clf.predict(testing_X)
-c = 0
-correct = 0
-for i in range(0, len(testing_X)):
-    if predicted_testing_y[i] == testing_y[i]:
-        correct = correct + 1
-    c = c + 1
-print(correct * 100 / c)
-
+for clf in [
+     LogisticRegression(),  
+     KNeighborsClassifier(),
+     SVC(kernel='linear'), 
+     SVC(), 
+     GaussianNB(), 
+     BernoulliNB(), 
+     MultinomialNB(), 
+     MultinomialNB(),
+     Perceptron(max_iter=5, tol=None), 
+     SGDClassifier(max_iter=5, tol=None),
+     PassiveAggressiveClassifier(max_iter=5, tol=None),
+     MLPClassifier(max_iter=10000),
+#     MLPClassifier(solver='sgd', hidden_layer_sizes = (400,100), max_iter=10000),
+#     MLPClassifier(solver='sgd', hidden_layer_sizes = (400), max_iter=10000, learning_rate_init=0.1),
+#     MLPClassifier(solver='sgd', hidden_layer_sizes = (400), max_iter=10000, learning_rate_init=0.5),
+#     MLPClassifier(solver='sgd', hidden_layer_sizes = (400), max_iter=10000),
+#     MLPClassifier(solver='sgd', hidden_layer_sizes = (400), max_iter=1000),
+#     MLPClassifier(solver='adam', hidden_layer_sizes = (400), max_iter=1000),
+     KNeighborsClassifier(),
+     KNeighborsClassifier(n_neighbors=1),
+     KNeighborsClassifier(n_neighbors=2),
+     KNeighborsClassifier(n_neighbors=3),
+     KNeighborsClassifier(n_neighbors=4),
+     KNeighborsClassifier(n_neighbors=5),
+     TensorFlowLinearClassifier(n_classes=3)
+]: 
+    # clf.fit(training_X, training_y)  
+    # predicted_testing_y = clf.predict(testing_X)
+    # c = 0
+    # correct = 0
+    # interesting = 0
+    # for i in range(0, len(testing_X)):
+    #     if testing_y[i] == 1:
+    #         interesting = interesting + 1
+    #     if predicted_testing_y[i] == testing_y[i]:
+    #         correct = correct + 1
+    #     c = c + 1
+    # print(correct * 100 / c)
+    clf.fit(training_X, training_y)  
+    score = metrics.accuracy_score(testing_y, clf.predict(testing_X))
+    print("Accuracy: %f" % score)

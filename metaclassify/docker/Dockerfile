@@ -6,3 +6,4 @@ RUN pip3 install requests
 RUN pip3 install clarifai
 #RUN pip3 install protobuf
 RUN pip3 install -U scikit-learn
+RUN pip3 install -U skflow
