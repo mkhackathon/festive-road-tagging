@@ -1,4 +1,4 @@
-docker build -t retraining retraining
+#docker build -t retraining retraining
 #docker tag retraining yijun/tensorflow:retraining
 #docker push yijun/tensorflow:retraining
 function training() {
@@ -10,12 +10,12 @@ function training() {
 		  tar xfz $1.tgz 
 		fi
 	fi
-	docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it retraining \
+	docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it yijun/tensorflow:retraining \
 		bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir /$1
 }
 export -f training
 function testing() {
-        docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it retraining \
+        docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it yijun/tensorflow:retraining \
 		bazel-bin/tensorflow/examples/image_retraining/label_image \
 		--graph=/tmp/output_graph.pb --labels=/tmp/output_labels.txt \
 		--output_layer=final_result:0 \
@@ -23,4 +23,4 @@ function testing() {
 }
 export -f testing
 #$* flower_photos daisy/21652746_cc379e0eea_m.jpg
-$* festival-of-giants-2017 triceratops/19260709_1906157629708906_941293702425961197_n-small.jpg
+$* festival-of-giants-2017 puppet/19424271_10155798955468912_3425389609817707195_n-small.jpg
