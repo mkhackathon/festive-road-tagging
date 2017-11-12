@@ -36,7 +36,7 @@ triceratops 5
 Issue three commands as follows: 
 ```
 git clone https://github.com/mkhackathon/festive-road-tagging && cd   festive-road-tagging && git pull origin retraining && git checkout retraining && cd metaclassify
-b training
+b training festival-of-giants-2017
 b testing festival-of-giants-2017 puppet/19424271_10155798955468912_3425389609817707195_n-small.jpg
 ```
 
