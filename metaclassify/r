@@ -2,4 +2,5 @@ docker build -t metaclassify docker
 #docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 metaclassify.py 100_random_images.txt
 #docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 metaclassify.py festival-of-giants-2017-hand-tags.txt
 #docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 metaclassify.py tags.pb
-docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 svc_classifier.py festival-of-giants-2017-hand-tags.pb https://scripts.njae.me.uk/festive-road-pictures/small/2009/Best_Of/IMG_1741-small.jpg 
+#docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 svc_classifier.py festival-of-giants-2017-hand-tags.pb https://scripts.njae.me.uk/festive-road-pictures/small/2009/Best_Of/IMG_1741-small.jpg 
+docker run -w /e -v $(pwd)/secrets:/e/secrets -v $(pwd):/e -it metaclassify python3 svc_classifier.py festival-of-giants-2017-hand-tags.pb 100_random_images.pb
