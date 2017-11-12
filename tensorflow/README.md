@@ -94,10 +94,12 @@ INFO:tensorflow:Froze 2 variables.
 Converted 2 variables to const ops.
 ```
 
-We want to test the following image:
+# Outputs of testing
+
+Suppose we want to test the following image:
+
 ![A puppet](https://scripts.njae.me.uk/festive-road-pictures/small/2017/festival-of-giants-2017/19424271_10155798955468912_3425389609817707195_n-small.jpg)
 
-# Outputs of testing
 Issue the following command for testing:
 ```
 b testing festival-of-giants-2017 puppet/19424271_10155798955468912_3425389609817707195_n-small.jpg
