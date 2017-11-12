@@ -6,6 +6,8 @@ import requests
 import json
 from google.protobuf import text_format
 #import tensorflow as tf
+from parameters import LEARN_RATE, EPOCHS, CHECKPOINT_EVERY, BATCH_SIZE
+#import network as network
 from tag_pb2 import Data
 
 config = configparser.ConfigParser()
