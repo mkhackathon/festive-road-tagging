@@ -1,7 +1,7 @@
 # Usage
-You need to hand pick photos in folder X with its subfolders each named after a tag. 
+You need to hand pick photos in folder X with its subfolders, each named after a tag. 
 
-For example, we have collected photos from Festive Road as `festival-of-giants-2017`,
+For example, we have collected 215 photos from Festive Road as `festival-of-giants-2017`,
 in which three folders contains more than 20 photos each.
 
 ```
@@ -12,8 +12,7 @@ puppet 20
 
 ## Caveats
 For this to work, make sure each subfolder has at least 20 different photos.
-For examples, the following folders are simplified removed:
-
+For examples, the following folders have been removed:
 ```
 bees 4
 butterfly 1
@@ -31,16 +30,25 @@ installation 6
 mechanism 6
 triceratops 5
 ```
+They can still be found in the `festival-of-giants-2017-all` folder.
 
-# Run
-Issue three commands as follows: 
+# Installation
+
+Issue commands as follows: 
 ```
-git clone https://github.com/mkhackathon/festive-road-tagging && cd   festive-road-tagging && git pull origin retraining && git checkout retraining && cd metaclassify
-b training festival-of-giants-2017
-b testing festival-of-giants-2017 puppet/19424271_10155798955468912_3425389609817707195_n-small.jpg
+git clone https://github.com/mkhackathon/festive-road-tagging \
+ && cd festive-road-tagging \
+ && git pull origin retraining \
+ && git checkout retraining \
+ && cd metaclassify
 ```
 
 # Output of training
+
+Issue the following command for training:
+```
+b training festival-of-giants-2017
+```
 
 ```
 INFO:tensorflow:Looking for images in 'costume'
@@ -82,6 +90,10 @@ We want to test the following image:
 ![A puppet](https://scripts.njae.me.uk/festive-road-pictures/small/2017/festival-of-giants-2017/19424271_10155798955468912_3425389609817707195_n-small.jpg)
 
 # Outputs of testing
+Issue the following command for testing:
+```
+b testing festival-of-giants-2017 puppet/19424271_10155798955468912_3425389609817707195_n-small.jpg
+```
 
 ```
 2017-11-12 22:27:28.363361: W tensorflow/core/framework/op_def_util.cc:334] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().
