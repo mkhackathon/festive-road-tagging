@@ -1,3 +1,14 @@
+Table of Contents
+=================
+
+* [Usage](#usage)
+  * [Caveats](#caveats)
+* [Installation](#installation)
+* [Output of training](#output-of-training)
+* [Outputs of testing](#outputs-of-testing)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc.go)
+
 # Usage
 You need to hand pick photos in folder X with its subfolders, each named after a tag. 
 
