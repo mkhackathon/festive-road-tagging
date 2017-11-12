@@ -48,10 +48,7 @@ They can still be found in the `festival-of-giants-2017-all` folder.
 Issue commands as follows: 
 ```
 git clone https://github.com/mkhackathon/festive-road-tagging \
- && cd festive-road-tagging \
- && git pull origin retraining \
- && git checkout retraining \
- && cd tensorflow
+ && cd festive-road-tagging/tensorflow
 ```
 
 # Output of training
