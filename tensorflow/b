@@ -1,0 +1,30 @@
+function installing() {
+	docker build -t retraining retraining
+	docker tag retraining yijun/tensorflow:retraining
+	docker push yijun/tensorflow:retraining
+}
+export -f installing
+function training() {
+	if [ "$1" == "flower_photos" ]; then
+		if [ ! -d $1 ]; then
+		  if [ ! -f $1.tgz ]; then
+			curl -O http://download.tensorflow.org/example_images/$1.tgz
+		  fi
+		  tar xfz $1.tgz 
+		fi
+	fi
+	docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it yijun/tensorflow:retraining \
+		bazel-bin/tensorflow/examples/image_retraining/retrain --image_dir /$1
+}
+export -f training
+function testing() {
+        docker run -w /tensorflow -v $(pwd)/output_$1:/tmp -v $(pwd)/$1:/$1 -it yijun/tensorflow:retraining \
+		bazel-bin/tensorflow/examples/image_retraining/label_image \
+		--graph=/tmp/output_graph.pb --labels=/tmp/output_labels.txt \
+		--output_layer=final_result:0 \
+		--image=/$1/$2
+}
+export -f testing
+#$* flower_photos daisy/21652746_cc379e0eea_m.jpg
+cp -r festival-of-giants-2017-all/bees festival-of-giants-2017/
+$* festival-of-giants-2017 puppet/19424271_10155798955468912_3425389609817707195_n-small.jpg
